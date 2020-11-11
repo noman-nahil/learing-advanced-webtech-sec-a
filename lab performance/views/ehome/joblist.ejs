@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User List</title>
+</head>
+<body>
+	<h1> joblist</h1>
+
+	<a href="/ehome">Back</a> | 
+	<a href="/employee/create">Add new Job</a>  |
+	<a href="/logout">logout</a>  
+
+	<br>
+
+	<table border="1">
+		<tr>
+			<td>Id</td>
+			<td>Company Name</td>
+			<td>Job Title</td>
+			<td>Location</td>
+			<td>Salary</td>
+		</tr>
+		
+		
+
+		<% users.forEach( function(job){ %>
+			
+			<tr>
+				<td><%= job.id %></td>
+				<td><%= job.cname %></td>
+				<td><%= job.jobtitle %></td>
+				<td><%= job.location %></td>
+				<td><%= job.salary %></td>
+				<td>
+					<a href="/employee/edit?jobid=<%= job.id %>">Edit</a> 
+					<a href="/employee/delete?jobid=<%= job.id %>">Delete</a>
+				</td>
+			</tr>
+
+		<%
+			}); 
+		%>
+		
+	</table>
+
+</body>
+</html>

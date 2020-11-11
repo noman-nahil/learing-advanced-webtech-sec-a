@@ -15,36 +15,24 @@ router.post('/create', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
 	
-
-	/*	
-		if(req.body.username != "" || req.body.email !="" || req.body.password !="")//|| req.body.email=req.body.password)
-		{
-			
-			var student = [req.body.username,req.body.email,req.body.password];
-			req.session.studentlist.push(student);//.concat(this.student);
-			//console.log(req.session.studentlist);
-			//res.send('Username Required');
-			res.redirect("/home/userlist");
-		}
-		else{
-			res.send('Failed');
-		}
-		*/
 		var user= {
 			ename: req.body.name,
 			cname: req.body.cname,
 			contact: req.body.contact,
 			username: req.body.username,
 			password: req.body.password,
-			type:req.body.type
+			type:1
 	
 		}
-		userModel.insertEmployee(user, function(status){
+		userModel.insert(user, function(status){
 			if(status){
-				
-				res.redirect('/home');
+				//res.render('home/userlist');
+				userModel.getAll(function(results){
+					res.render('home/userlist', {users: results});
+				});
 			}else{
-				res.redirect('/login');
+				console.log('Erorr');
+				res.render('user/create');
 			}
 		});
 
@@ -56,14 +44,24 @@ router.post('/create', (req, res)=>{
 router.get('/edit', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
-		var i= req.query.stdno;
+		//var ename= req.query.name;
+		console.log(req.query.name)
+		var id= {
+			username:req.query.name
+		}
+		userModel.getById(id,function(results){
+			var employee = {
+				name 	: results.ename,
+				cname 	:results.cname,
+				contact	:results.contact,
+				username:results.username,
+				password:results.password
 
-		//console.log(req.query.noOfstudent);
-		//console.log(req.session.studentlist[i]);
-		/*res.render('user/edit',{name:req.session.studentlist[i][0],
-								password:req.session.studentlist[i][2],
-								email:req.session.studentlist[i][1]});*/
-		res.render('user/edit');
+			};
+			res.render('user/edit',employee);
+		});
+		//res.send(req.query.name);
+		//res.render('user/edit');
 	}else{
 		res.redirect('/login');
 	}
@@ -72,11 +70,27 @@ router.get('/edit', (req, res)=>{
 router.post('/edit', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
-		var i= req.query.stdno;
-		req.session.studentlist[i]=[req.body.username,req.body.email,req.body.password];
-		//alert('update successfully')
-		res.redirect('/home/userlist');
-		//res.send('updated');
+		var user= {
+			ename: req.body.name,
+			cname: req.body.cname,
+			contact: req.body.contact,
+			password: req.body.password,
+			username:req.query.name,
+			type:1
+	
+		}
+		userModel.update(user, function(status){
+			if(status){
+				//res.render('home/userlist');
+				userModel.getAll(function(results){
+					res.render('home/userlist', {users: results});
+				});
+			}else{
+				console.log('Erorr');
+				res.render('user/create');
+			}
+		});		
+		
 	}else{
 		res.redirect('/login');
 	}
@@ -85,10 +99,21 @@ router.post('/edit', (req, res)=>{
 router.get('/delete', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
-		var i = req.query.stdno;
-		res.render('user/delete',{name:req.session.studentlist[i][0],
-								password:req.session.studentlist[i][2],
-								email:req.session.studentlist[i][1]});
+			console.log(req.query.name)
+		var id= {
+			username:req.query.name
+		}
+		userModel.getById(id,function(results){
+			var employee = {
+				name 	: results.ename,
+				cname 	:results.cname,
+				contact	:results.contact,
+				username:results.username,
+				password:results.password
+
+			};
+			res.render('user/delete',employee);
+		});
 	}else{
 		res.redirect('/login');
 	}
@@ -97,10 +122,23 @@ router.get('/delete', (req, res)=>{
 router.post('/delete', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
-		var i = req.query.stdno;
-		req.session.studentlist.splice(i,1);
-		res.redirect('/home/userlist');
-		//res.send('done!');
+
+		var id= {
+			username:req.query.name
+		}
+		userModel.delete(id,function(status){
+			if(status){
+				userModel.getAll(function(results){
+					res.render('home/userlist', {users: results});
+				});
+			}
+			else{
+				console.log('Erorr');
+				res.render('user/create');
+			}
+
+		});
+
 	}else{
 		res.redirect('/login');
 	}

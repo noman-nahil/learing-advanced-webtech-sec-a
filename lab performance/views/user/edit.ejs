@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit User</title>
+	<title>Update Employee Information</title>
 </head>
 <body>
 	<form method="post">
 		<fieldset>
-			<legend>Edit User</legend>
+			<legend>Create New User</legend>
 			<table>
 				<tr>
-					<td>Username</td>
-					<td><input type="text" name="username" value="<%= name %>"></td>
+					<td><h3><%= username%></h3></td>
 				</tr>
+				<tr>
+					<td>Employee Name</td>
+					<td><input type="text" name="name" value="<%= name%>"></td>
+				</tr>
+				<tr>
+					<td>Company Name</td>
+					<td><input type="text" name="cname" value="<%= cname%>"></td>
+				</tr>
+				<tr>
+					<td>Contact</td>
+					<td><input type="text" name="contact" value="<%= contact%>"></td>
+				</tr>
+				
 				<tr>
 					<td>Password</td>
-					<td><input type="text" name="password" value="<%= password %>"></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input type="email" name="email" value="<%= email %>"></td>
+					<td><input type="text" name="password" value="<%= password%>"></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="submit" value="submit"></td>
+					<td><input type="submit" name="submit" value="Submit"></td>
 				</tr>
 			</table>
 		</fieldset>
