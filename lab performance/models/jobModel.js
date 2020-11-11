@@ -2,7 +2,7 @@ const db = require('./db');
 
 module.exports= {
 	getById: function(id, callback){
-		var sql = "select * from jobinfo where username='"+id.id+"'";
+		var sql = "select * from jobinfo where id='"+id.id+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
 				callback(results[0]);
@@ -32,7 +32,7 @@ module.exports= {
 
 	},
 	delete: function(id, callback){
-		var sql="delete from jobinfo where username='"+id.id+"'";
+		var sql="delete from jobinfo where id='"+id.id+"'";
 		db.execute(sql,function(results){
 			callback(true);
 		});

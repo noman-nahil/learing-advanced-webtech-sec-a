@@ -40,10 +40,10 @@ router.post('/create', (req, res)=>{
 router.get('/edit', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
-		//var ename= req.query.name;
+
 		console.log(req.query.jobid)
 		var id= {
-			username:req.query.jobid
+			id:req.query.jobid
 		}
 		jobModel.getById(id,function(results){
 			var job= {
@@ -52,7 +52,7 @@ router.get('/edit', (req, res)=>{
 				location: results.location,
 				salary: results.salary
 			
-			}
+			};
 			res.render('employee/edit',job);
 		});
 		//res.send(req.query.name);
@@ -94,7 +94,7 @@ router.get('/delete', (req, res)=>{
 	if(req.cookies['uname'] != ""){
 			console.log(req.query.name)
 		var id= {
-			username:req.query.name
+			id:req.query.jobid
 		}
 		jobModel.getById(id,function(results){
 			var job= {
@@ -103,8 +103,8 @@ router.get('/delete', (req, res)=>{
 				location: results.location,
 				salary: results.salary
 			
-			}
-			res.render('job/delete',job);
+			};
+			res.render('employee/delete',job);
 		});
 	}else{
 		res.redirect('/login');
