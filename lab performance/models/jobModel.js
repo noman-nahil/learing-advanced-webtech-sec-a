@@ -25,7 +25,7 @@ module.exports= {
 
 	},
 	update:function(job, callback){
-		var sql= "update jobinfo set cname='"+user.cname+"',jobtitle='"+user.jobtitle+"',location='"+user.location+"',salary='"+user.salary+"' where id='"+job.id+"'";
+		var sql= "update jobinfo set cname='"+job.cname+"',jobtitle='"+job.jobtitle+"',location='"+job.location+"',salary='"+job.salary+"' where id='"+job.id+"'";
 		db.execute(sql,function(results){
 				callback(true);
 		});

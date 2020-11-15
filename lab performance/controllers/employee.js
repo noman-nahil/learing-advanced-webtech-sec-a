@@ -47,6 +47,7 @@ router.get('/edit', (req, res)=>{
 		}
 		jobModel.getById(id,function(results){
 			var job= {
+				id:id,
 				cname: results.cname,
 				jobtitle:results.jobtitle,
 				location: results.location,
@@ -65,7 +66,11 @@ router.get('/edit', (req, res)=>{
 router.post('/edit', (req, res)=>{
 	
 	if(req.cookies['uname'] != ""){
+		var id= {
+			id:req.query.jobid
+		}
 		var job= {
+			id:req.query.jobid,
 			cname: req.body.cname,
 			jobtitle:req.body.jobtitle,
 			location: req.body.location,
@@ -116,12 +121,12 @@ router.post('/delete', (req, res)=>{
 	if(req.cookies['uname'] != ""){
 
 		var id= {
-			username:req.query.jobid
+			id:req.query.jobid
 		}
 		jobModel.delete(id,function(status){
 			if(status){
 				jobModel.getAll(function(results){
-					res.render('job/joblist', {users: results});
+					res.render('ehome/joblist', {users: results});
 				});
 			}
 			else{
