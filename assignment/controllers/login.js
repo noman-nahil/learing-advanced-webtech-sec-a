@@ -15,12 +15,14 @@ router.post('/', (req, res)=>{
 	};
 	userModel.validate(user, function(results){
 		if(results.type==0){
-            res.cookie('uname', req.body.username);
+			req.session.username=req.body.username;
+            //res.cookie('uname', req.body.username);
             console.log('admin');
 			res.redirect('/ahome');
 		}
 		else if(results.type==1){
-            res.cookie('uname',req.body.username);
+			req.session.username=req.body.username;
+           // res.cookie('uname',req.body.username);
             console.log('user');
 			res.redirect('/uhome');
         }

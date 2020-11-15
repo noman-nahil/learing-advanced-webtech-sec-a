@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Home</title>
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+            <legend>Profile Page</legend>
+            
+			<table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" value="<%= name %>" disabled></td>
+                </tr>
+				<tr>
+					<td>Username</td>
+					<td><input type="text" name="username" value="<%= username%>" disabled></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="text" name="password" value="<%= password%>" disabled></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" name="contact" value="<%= contact%>"disabled></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><input type="text" name="contact" value="<%= gender%>"disabled></td>
+                </tr>
+
+            </table>
+            
+		</fieldset>
+	</form>
+</body>
+</html>

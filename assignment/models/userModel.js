@@ -12,7 +12,7 @@ module.exports= {
 		});
 	},
 	getById: function(id, callback){
-		var sql = "select * from userinfo where username='"+id.username+"'";
+		var sql = "select * from userinfo where username='"+id.id+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
 				callback(results[0]);

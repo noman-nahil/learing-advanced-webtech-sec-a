@@ -29,7 +29,7 @@ router.post('/',(req,res)=>{
 
     }
     else{
-
+        
         res.redirect('/register');
     }
     
