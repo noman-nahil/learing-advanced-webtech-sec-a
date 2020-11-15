@@ -28,7 +28,7 @@ module.exports= {
 		});
 	},
 	insert: function(user, callback){
-		//var sql = 
+		var sql = "insert into userinfo (name,username,password,contact,type,gender) values('"+user.name+"','"+user.username+"','"+user.password+"','"+user.contact+"','"+user.type+"','"+user.gender+"')";
 		db.execute(sql,function(results){
 			callback(results);
 		});
