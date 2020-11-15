@@ -11,7 +11,7 @@
 			<table>
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="name" value="<%= name %>" disabled></td>
+                    <td><input type="text" value="<%= name%>" disabled></td>
                 </tr>
 				<tr>
 					<td>Username</td>
@@ -27,13 +27,14 @@
                 </tr>
                 <tr>
                     <td>Gender</td>
-                    <td><input type="text" name="contact" value="<%= gender%>"disabled></td>
+                    <td><input type="text" name="gender" value="<%= gender%>"disabled></td>
                 </tr>
 
             </table>
             
             <a>Add New Product</a> ||
-            <a> Product List</a>
+            <a> Product List</a> ||
+            <a href="admin/edit">Edit Profile</a>
 		</fieldset>
 	</form>
 </body>

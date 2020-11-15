@@ -35,7 +35,7 @@ module.exports= {
 
 	},
 	update:function(user, callback){
-		var sql= "update userinfo set name='"+user.name+"',password='"+user.password+"',contact='"+user.contact+"' where username='"+user.id+"'";
+		//var sql= "update userinfo ;
 		db.execute(sql,function(results){
 				callback(true);
 		});

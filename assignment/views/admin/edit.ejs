@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Home</title>
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+            <legend>Profile Edit Page</legend>
+            
+			<table>
+                <tr>
+                    <td><h3><%= username%></h3></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" value="<%= name %>"></td>
+                </tr>
+	
+				<tr>
+					<td>Password</td>
+					<td><input type="text" name="password" value="<%= password%>"></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" name="contact" value="<%= contact%>"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Update">|| <a href="/ahome">Back</a></td>
+                </tr>
+
+            </table>
+            
+		</fieldset>
+	</form>
+</body>
+</html>

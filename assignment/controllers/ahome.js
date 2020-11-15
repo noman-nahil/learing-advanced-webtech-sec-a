@@ -11,6 +11,7 @@ router.get('/',(req,res)=>{
         userModel.getById(id,function(results){
 
             var admin={
+                id:results.id,
                 name:results.name,
                 username:results.username,
                 password: results.password,
@@ -19,6 +20,7 @@ router.get('/',(req,res)=>{
                 gender:results.gender
             };
             if(admin.type==0){
+               // res.session.id=admin.id;
                 res.render('ahome/index',admin);
             }
             else{
@@ -34,3 +36,4 @@ router.get('/',(req,res)=>{
     
 });
 module.exports = router;
+//x
