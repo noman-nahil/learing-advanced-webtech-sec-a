@@ -1,7 +1,11 @@
 const express = require('express');
+const productModel = require('../models/productModel');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.render('home/index');
+
+    productModel.getAll(function(results){
+        res.render('home/index', {users:results})
+    });
 });
 module.exports = router;

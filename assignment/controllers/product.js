@@ -44,7 +44,11 @@ router.post('/add',(req,res)=>{
     }
     productModel.insert(product,function(status){
         if(status){
-            console.log('Insert successfully');
+            res.redirect('/ahome/productlist')
+            //console.log('Insert successfully');
+            /*productModel.getAll(function(results){
+                res.render('ahome/productlist', {users:results})
+            });*/
         }
         else{
             console.log('Opps!!! something wrong');

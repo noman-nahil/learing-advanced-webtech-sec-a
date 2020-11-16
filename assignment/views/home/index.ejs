@@ -4,8 +4,37 @@
 	<title>Login page</title>
 </head>
 <body>
+    <table border="1">
+        <tr>
+	
+			<td>Title</td>
+			<td>Image</td>
+            <td>Size</td>
+            <td>Type</td>
+
+		</tr>
+		
+		
+
+		<% users.forEach( function(product){ %>
+			
+			<tr>
+	
+				<td><%= product.title %></td>
+				<td><img src="../../assets/images/<%= product.image %>"></td>
+                <td><%= product.size %></td>
+                <td><%= product.type %></td>
+				<td>
+				</td>
+			</tr>
+
+		<%
+			}); 
+		%>
+    </table>
 
     <a href="/login">Login</a>
     <a href="/register">Register</a>
+
 </body>
 </html>
