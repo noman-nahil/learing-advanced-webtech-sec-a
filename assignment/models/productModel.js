@@ -2,7 +2,7 @@ const db = require('./db');
 
 module.exports= {
 	validate: function(user, callback){
-		var sql = "select * from userinfo where username='"+user.username+"' and password='"+user.password+"'";
+		var sql = "select * from product where username='"+user.username+"' and password='"+user.password+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
 				callback(results[0]);
@@ -12,7 +12,7 @@ module.exports= {
 		});
 	},
 	getById: function(id, callback){
-		var sql = "select * from userinfo where username='"+id.id+"'";
+		var sql = "select * from product where username='"+id.id+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
 				callback(results[0]);
@@ -22,27 +22,27 @@ module.exports= {
 		});
 	},
 	getAll: function(callback){
-		//var sql = "select * from userinfo where type = 1";
+		var sql = "select * from product";
 		db.getResults(sql, function(results){
 			callback(results);
 		});
 	},
-	insert: function(user, callback){
-		var sql = "insert into userinfo (name,username,password,contact,type,gender) values('"+user.name+"','"+user.username+"','"+user.password+"','"+user.contact+"','"+user.type+"','"+user.gender+"')";
+	insert: function(product, callback){
+		var sql = "insert into product (title,description,image,size,category,type) values('"+product.title+"','"+product.description+"','"+product.image+"','"+product.size+"','"+product.category+"','"+product.type+"')";
 		db.execute(sql,function(results){
 			callback(results);
 		});
 
 	},
 	update:function(user, callback){
-		//var sql= "update userinfo ;
+		//var sql= "update product ;
 		db.execute(sql,function(results){
 				callback(true);
 		});
 
 	},
 	delete: function(id, callback){
-		//var sql="delete from userinfo where username='"+id.username+"'";
+		//var sql="delete from product where username='"+id.username+"'";
 		db.execute(sql,function(results){
 			callback(true);
 		});

@@ -1,5 +1,6 @@
 const express   = require('express');
 const userModel =require.main.require('./models/userModel');
+const productModel =require.main.require('./models/productModel');
 const router    = express.Router();
 
 router.get('/',(req,res)=>{
@@ -31,5 +32,25 @@ router.get('/add',(req,res)=>{
         res.redirect('/login');
     }
     
+});
+router.post('/add',(req,res)=>{
+    var product={
+        title:req.body.title,
+        description:req.body.description,
+        image:req.body.image,
+        size:req.body.size,
+        category:req.body.category,
+        type:req.body.type
+    }
+    productModel.insert(product,function(status){
+        if(status){
+            console.log('Insert successfully');
+        }
+        else{
+            console.log('Opps!!! something wrong');
+        }
+
+    });
+
 });
 module.exports = router;

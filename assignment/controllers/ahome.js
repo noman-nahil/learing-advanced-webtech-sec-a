@@ -1,4 +1,5 @@
 const express = require('express');
+const productModel = require('../models/productModel');
 const userModel=require.main.require('./models/userModel');
 const router = express.Router();
 
@@ -35,5 +36,9 @@ router.get('/',(req,res)=>{
     }
     
 });
+router.get('/productlist',(req,res)=>{
+    productModel.getAll(function(results){
+        res.render('ahome/productlist', {users:results})
+    });
+});
 module.exports = router;
-//x
