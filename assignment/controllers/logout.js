@@ -1,7 +1,14 @@
-const express = require('express');
-const router = express.Router();
+const express 	= require('express');
+const router 	= express.Router();
 
-router.get('/',(req,res)=>{
-    res.send('logout.js');
+router.get('/', (req, res)=>{
+
+	req.session.username = "";
+	//res.cookie['uname'] = "";
+	//res.clearCookie("uname");
+	res.redirect('/login');
 });
+
+
 module.exports = router;
+
