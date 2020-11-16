@@ -43,10 +43,11 @@ module.exports= {
 
 	},
 	delete: function(id, callback){
-	 var  sql="delete from product where username='"+id.username+"'";
+		var sql="delete from product where id='"+id.id+"'";
 		db.execute(sql,function(results){
 			callback(true);
 		});
 
 	}
+	
 }

@@ -97,4 +97,38 @@ router.post('/edit',(req,res)=>{
 
 
 });
+router.get('/delete',(req,res)=>{
+    var id={
+        id:req.query.pid
+    } 
+    productModel.getById(id,function(results){
+        var product={
+            title:results.title,
+            description:results.description,
+            image:results.image,
+            size:results.size,
+            category:results.category
+        }
+        res.render('product/delete',product);
+
+    });
+
+});
+router.post('/delete',(req,res)=>{
+    var id ={
+        id:req.query.pid
+    }
+    console.log(id);
+    productModel.delete(id,function(status){
+        if(status){
+            productModel.getAll(function(results){
+                res.render('ahome/productlist', {users:results})
+            });
+        }
+        else{
+            console.log('Opps!!! something wrong');
+        }
+    });
+
+});
 module.exports = router;
