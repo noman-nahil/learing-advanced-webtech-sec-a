@@ -57,4 +57,7 @@ router.post('/add',(req,res)=>{
     });
 
 });
+router.get('/edit',(req,res)=>{
+    res.send('done');
+});
 module.exports = router;

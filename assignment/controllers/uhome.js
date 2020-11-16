@@ -1,5 +1,6 @@
 const express = require('express');
 const userModel=require.main.require('./models/userModel');
+const productModel = require('../models/productModel');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
@@ -30,5 +31,10 @@ router.get('/',(req,res)=>{
     else{
         res.redirect('/login');
     }
+});
+router.get('/productlist',(req,res)=>{
+    productModel.getAll(function(results){
+        res.render('uhome/productlist', {users:results})
+    });
 });
 module.exports = router;
