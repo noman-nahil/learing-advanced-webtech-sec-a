@@ -58,6 +58,43 @@ router.post('/add',(req,res)=>{
 
 });
 router.get('/edit',(req,res)=>{
-    res.send('done');
+    console.log(req.query.pid);
+    var id={
+        id:req.query.pid
+    } 
+    productModel.getById(id,function(results){
+        var product={
+            title:results.title,
+            description:results.description,
+            image:results.image,
+            size:results.size,
+            category:results.category
+        }
+        res.render('product/edit',product);
+
+    });
+
+});
+router.post('/edit',(req,res)=>{
+
+       var id=req.query.pid;
+ 
+    var product={
+        title:req.body.title,
+        description:req.body.description,
+        size:req.body.size,
+        category:req.body.category,
+        id:id
+    }
+    productModel.update(product,function(status){
+        if(status){
+            res.redirect('/ahome/productlist')
+        }
+        else{
+            console.log('Opps!!! something wrong');
+        }
+    });
+
+
 });
 module.exports = router;

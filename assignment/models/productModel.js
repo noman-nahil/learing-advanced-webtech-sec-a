@@ -12,7 +12,7 @@ module.exports= {
 		});
 	},
 	getById: function(id, callback){
-		var sql = "select * from product where username='"+id.id+"'";
+		var sql = "select * from product where id='"+id.id+"'";
 		db.getResults(sql, function(results){
 			if(results.length >0 ){
 				callback(results[0]);
@@ -34,15 +34,16 @@ module.exports= {
 		});
 
 	},
-	update:function(user, callback){
-		//var sql= "update product ;
+	update:function(product, callback){
+		console.log(product);
+		var sql= "update product set title='"+product.title+"',description='"+product.description+"',size='"+product.size+"',category='"+product.category+"' where id='"+product.id+"'";
 		db.execute(sql,function(results){
 				callback(true);
 		});
 
 	},
 	delete: function(id, callback){
-		//var sql="delete from product where username='"+id.username+"'";
+	 var  sql="delete from product where username='"+id.username+"'";
 		db.execute(sql,function(results){
 			callback(true);
 		});

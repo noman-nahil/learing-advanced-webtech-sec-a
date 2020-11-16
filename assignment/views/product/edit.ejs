@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+			<legend>Add new product</legend>
+			<table>
+                <tr>
+                    <td>Title</td>
+                    <td><input type="text" name="title" value="<%= title %>"></td>
+                </tr>
+				<tr>
+					<td>Description</td>
+					<td><input type="text" name="description" value="<%= description %>"></td>
+                </tr>
+            
+				<tr>
+					<td>Size</td>
+                    <td><select name="size"> 
+                        <option name="size"value="">Pervious--<%= size %></option>
+                        <option name="size"value="S">S</option>
+                        <option name="size"value="M">M</option>
+                        <option name="size"value="L">L</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td><select name="category">
+                        <option name="category"value="<%= category%>">selected--<%= category %></option>
+                        <option name="category"value="male">Male</option>
+                        <option name="category"value="female">Female</option>
+                </tr>
+            
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Update">|| <a href="/ahome">Back</a></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>
