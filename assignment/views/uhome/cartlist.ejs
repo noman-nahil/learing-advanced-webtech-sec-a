@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User List</title>
+</head>
+<body>
+	<h1> Userlist</h1>
+
+	<a href="/uhome/productlist">Back</a> | 
+    
+    <a href="uhome/productlist">Product List</a>||
+    <a href="/logout">logout</a>  |
+	<br>
+    <form method="post">
+        <table border="1">
+            <tr>
+                <td>Serial</td>
+                <td>ProductID</td>
+                <td>Title</td>
+                <td>Size</td>
+                <td>Quantity</td>
+                <td>Amount</td>
+            </tr>
+            
+            
+    
+            <% users.forEach( function(std,i){ %>
+                
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= std[1] %></td>
+                    <td><%= std[2] %></td>
+                    <td><%= std[3] %></td>
+                    <td><%= std[5] %></td>
+                    <td><%= std[6] %></td>
+                    <td><a>Remove</a></td>
+                </tr>
+    
+            <%
+                }); 
+            %>
+            
+        </table>
+        <input type="submit" name="submit" value="Confirm">
+        
+    </form>
+	
+
+</body>
+</html>

@@ -34,6 +34,13 @@ module.exports= {
 		});
 
 	},
+	insertProduct: function(element, callback){
+		var sql = "insert into phistory (username,id,title,category,type,quantity,totalAmount,status) values('"+element.username+"','"+element.id+"','"+element.title+"','"+element.category+"','"+element.type+"','"+element.quantity+"','"+element.amount+"','1')";
+		db.execute(sql,function(results){
+			callback(results);
+		});
+
+	},
 	update:function(user, callback){
 		var sql= "update userinfo set name='"+user.name+"',password='"+user.password+"',contact='"+user.contact+"' where username='"+user.id+"'";
 		db.execute(sql,function(results){

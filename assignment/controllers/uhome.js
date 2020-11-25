@@ -58,25 +58,65 @@ router.get('/purchase/:id',(req,res)=>{
     });
 });
 router.post('/purchase/:id',(req,res)=>{
-    //console.log(req.session.username);
+    console.log(req.body.quantity);
+    var quantity=req.body.quantity;
+    var size=req.body.size;
+    console.log(size);
+
     if(req.body.quantity=!""){
         console.log(req.session.username);
-        var order={
+        /*var order={
             username:req.session.username,
             id:req.body.id,
             title:req.body.title,
-            size:req.body.size,
+           
             category:req.body.category,
-            quantity:req.body.quantity,
+            quantity:quantity,
             amount:req.body.amount
-        };
-        var orderlist =[req.session.username,req.body.id,req.body.title,req.body.size,req.body.category,req.body.quantity,req.body.amount];
-        req.session.cart.push(orderlist);
+        };*/
         //console.log(order);
+        var orderlist =[
+            req.session.username,
+            req.body.id,
+            req.body.title,
+            size,
+            req.body.category,
+            quantity,
+            req.body.amount];
+        req.session.cart.push(orderlist);
+        console.log(req.session.cart);
+        res.redirect('/uhome/productlist');
+        
     }
     else{
         console.log('failed');
     }
+
+});
+router.get('/cartlist',(req,res)=>{
+    res.render('uhome/cartlist',{users:req.session.cart});
+
+});
+router.post('/cartlist',(req,res)=>{
+    console.log('Traking start');
+    req.session.cart.forEach(element => {
+        console.log(element);
+    var element={
+        username:element[0],
+        id:element[1],
+        title:element[2],
+        size:element[3],
+        category:element[4],
+        quantity:element[5],
+        amount:element[6]
+
+    }
+    console.log(element);
+        userModel.insertProduct(element,function(results){});
+    
+    });
+   
+   console.log('Traking End');
 
 });
 
