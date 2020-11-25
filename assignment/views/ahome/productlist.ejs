@@ -17,7 +17,8 @@
 			<td>Image</td>
             <td>Size</td>
             <td>Category</td>
-            <td>Type</td>
+			<td>Type</td>
+			<td>Price</td>
 		</tr>
 		
 		
@@ -31,7 +32,8 @@
 				<td><img src="../../assets/images/<%= product.image %>"></td>
                 <td><%= product.size %></td>
                 <td><%= product.category %></td>
-                <td><%= product.type %></td>
+				<td><%= product.type %></td>
+				<td><%= product.price %></td>
 				<td>
 				<a href="/product/edit?pid=<%= product.id %>">Edit</a>
 				<a href="/product/delete?pid=<%= product.id %>">Delete</a>	

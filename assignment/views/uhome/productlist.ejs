@@ -7,31 +7,39 @@
 	<h1> Product List</h1>
 
 	<br>
-	<a href="/uhome">Back</a> || <a href="/logout">Log out</a></a>
+	<a href="/uhome">Back</a> || <a>Male Category</a> || <a>Female Category</a>  || <a>Cart List</a> || <a href="/logout">Log out</a> 
 
 	<table border="1">
 		<tr>
+			<td>Serial</td>
 			<td>Id</td>
 			<td>Title</td>
 			<td>Description</td>
 			<td>Image</td>
+			<td>Price</td>
             <td>Size</td>
             <td>Category</td>
-            <td>Type</td>
+			<td>Type</td>
 		</tr>
 		
 		
 
-		<% users.forEach( function(product){ %>
+		<% users.forEach( function(product,i){ %>
 			
 			<tr>
+				<td><%= i+1 %></td>
 				<td><%= product.id %></td>
 				<td><%= product.title %></td>
 				<td><%= product.description %></td>
 				<td><img src="../../assets/images/<%= product.image %>"></td>
+				<td id="price"><%= product.price %></td>
                 <td><%= product.size %></td>
                 <td><%= product.category %></td>
-                <td><%= product.type %></td>
+				<td><%= product.type %></td>
+				
+				<td><a href="/uhome/purchase/<%= product.id %>">Add To Cart</a> </td>
+				
+				
 	
 			</tr>
 
@@ -43,4 +51,25 @@
 	<a href="/uhome">Back</a> || <a href="/logout">Log out</a></a>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+/*$('#price, #quantity').on('input',function(){
+    var price = parseFloat($('#price').val()) || 0;
+    var quantity = parseFloat($('#quantity').val()) || 0;
+
+    $('#amount').val(price * quantity);    
+});*/
+$(document).ready(function(){
+	$("#cart[i]").click(function(){
+		if($("#quantity").val()===''){
+			alert('Quntity fill required');
+		}
+		else{
+			alert('OK');
+		}
+
+	});
+
+});
+</script>
 </html>

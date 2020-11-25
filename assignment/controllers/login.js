@@ -23,7 +23,8 @@ router.post('/', (req, res)=>{
 		else if(results.type==1){
 			req.session.username=req.body.username;
            // res.cookie('uname',req.body.username);
-            console.log('user');
+			console.log('user');
+			req.session.cart= [];
 			res.redirect('/uhome');
         }
     

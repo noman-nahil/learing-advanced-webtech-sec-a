@@ -40,7 +40,8 @@ router.post('/add',(req,res)=>{
         image:req.body.image,
         size:req.body.size,
         category:req.body.category,
-        type:req.body.type
+        type:req.body.type,
+        price:req.body.price
     }
     productModel.insert(product,function(status){
         if(status){
@@ -68,7 +69,8 @@ router.get('/edit',(req,res)=>{
             description:results.description,
             image:results.image,
             size:results.size,
-            category:results.category
+            category:results.category,
+            type:results.type
         }
         res.render('product/edit',product);
 
@@ -84,6 +86,7 @@ router.post('/edit',(req,res)=>{
         description:req.body.description,
         size:req.body.size,
         category:req.body.category,
+        type:req.body.type,
         id:id
     }
     productModel.update(product,function(status){

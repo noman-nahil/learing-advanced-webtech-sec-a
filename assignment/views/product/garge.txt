@@ -1,0 +1,26 @@
+<tr>
+                        <td>Size</td>
+                        <td><select name="size">
+                            <option selected= <%=size%>=='S' value="S">S</option>
+                            <option selected=<%=size%>=='M' %> value="M">M</option>
+                            <option selected=<%=size%>=='L' %> value="L">L</option>
+                            <option selected=<%=size%>=='XL' %>value="XL">XL</option>
+                        </select></td>
+                    </tr>
+                    <option value="options[i]"><%= options[i] %></option>
+
+
+
+                    final
+
+
+                    <% var options = ['S','M','L','XL']; %>
+                          <% for(var i = 0; i< options.length; i++) { %>
+                                <% if(size === options[i]){ %>
+                                   <option value="options[i].value" selected="selected"><%= options[i] %></option>
+                                <% } else{ %>
+                                    <option value="options[i].value"><%= options[i] %></option>
+                                <% } %>
+                                                               
+                               
+                          <% } %>

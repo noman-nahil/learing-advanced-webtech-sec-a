@@ -41,4 +41,5 @@ router.get('/productlist',(req,res)=>{
         res.render('ahome/productlist', {users:results})
     });
 });
+
 module.exports = router;
