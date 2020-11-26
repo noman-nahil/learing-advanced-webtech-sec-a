@@ -41,5 +41,30 @@ router.get('/productlist',(req,res)=>{
         res.render('ahome/productlist', {users:results})
     });
 });
+router.get('/list',(req,res)=>{
+    productModel.getList(function(results){
+        res.render('ahome/list',{users:results})
+    });
+});
+router.get('/history',(req,res)=>{
+    res.send('History');
+});
+router.get('/orderconfirm/:serial',(req,res)=>{
+    productModel.order(req.params.serial,function(results){
+        console.log(results);
+        res.render('ahome/orderconfirm',results);
+    });
+});
+router.post('/orderconfirm/:serial',(req,res)=>{
+    productModel.orderUp(req.params.serial,function(results){
+        if(results){
+            productModel.getList(function(results){
+                res.render('ahome/list',{users:results})
+            });
+        }
+    });
+
+});
+
 
 module.exports = router;
