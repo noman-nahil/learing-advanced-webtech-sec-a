@@ -8,7 +8,7 @@
 
 	<a href="/uhome/productlist">Back</a> | 
     
-    <a href="uhome/productlist">Product List</a>||
+    <a href="/uhome/productlist">Product List</a>||
     <a href="/logout">logout</a>  |
 	<br>
     <form method="post">
@@ -33,7 +33,7 @@
                     <td><%= std[3] %></td>
                     <td><%= std[5] %></td>
                     <td><%= std[6] %></td>
-                    <td><a>Remove</a></td>
+                    <td><a href="/uhome/remove?pid=<%= i %> ">Remove</a></td>
                 </tr>
     
             <%

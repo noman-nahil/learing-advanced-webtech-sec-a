@@ -119,5 +119,24 @@ router.post('/cartlist',(req,res)=>{
    console.log('Traking End');
 
 });
+router.get('/remove',(req,res)=>{
+        //console.log(req.query.pid);
+        var pid = req.query.pid;
+        res.render('uhome/remove',{
+            serial:req.session.cart[pid][0],
+            id:req.session.cart[pid][1],
+            title:req.session.cart[pid][2],
+            size:req.session.cart[pid][3],
+            quantity:req.session.cart[pid][5],
+            amount:req.session.cart[pid][6]
+
+        });
+
+});
+router.post('/remove',(req,res)=>{
+    var pid = req.query.pid;
+    req.session.cart.splice(pid,1);
+    res.redirect('/uhome/cartlist');
+});
 
 module.exports = router;

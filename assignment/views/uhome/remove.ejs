@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit</title>
+</head>
+<body>
+	<form method="post">
+    <fieldset>
+        <table>
+            <legend>Edit product</legend>
+                        <tr>
+                            <td> Serial</td>
+                            <td><input type="text" name="id" value="<%= serial %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <td> Product ID</td>
+                            <td><input type="text" name="id" value="<%= id %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Title</td>
+                            <td><input type="text" name="title" value="<%= title %>" readonly></td>
+                        </tr>
+    
+                    
+                        <tr>
+                            <td>Size</td>
+                            <td><input type="text" name="size" value="<%= size %>" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Quantity</td>
+                            <td><input type="text" name="quantity" value="<%= quantity %>"readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Amount:</td>
+                            <td><input type="text" id="price" name="amount" value="<%= amount %>" readonly></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Are sure? this can't be undone!</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" name="submit" value="Remove">|| <a href="/uhome/cartlist">Back</a></td>
+                        </tr>
+                    </table>
+                </fieldset>
+	</form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+/*$('#price, #quantity').on('input',function(){
+    var price = parseInt($('#price').val());
+    var quantity = parseInt($('#quantity').val());
+
+    $('#amount').val(price * quantity);    
+});*/
+</script>
+</html>
