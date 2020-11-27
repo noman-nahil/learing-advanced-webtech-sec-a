@@ -47,7 +47,9 @@ router.get('/list',(req,res)=>{
     });
 });
 router.get('/history',(req,res)=>{
-    res.send('History');
+    productModel.getHistory(function(results){
+        res.render('ahome/history',{users:results})
+    });
 });
 router.get('/orderconfirm/:serial',(req,res)=>{
     productModel.order(req.params.serial,function(results){

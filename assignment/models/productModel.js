@@ -43,6 +43,12 @@ module.exports= {
 			callback(results);
 		});
 	},
+	getHistory: function(callback){
+		var sql = "select * from phistory where status='0' ";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
 	order: function(id,callback){
 		var sql = "select * from phistory where serial='"+id+"'";
 		db.getResults(sql, function(results){
