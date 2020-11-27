@@ -88,6 +88,13 @@ module.exports= {
 			callback(true);
 		});
 
+	},
+	remove: function(id, callback){
+		var sql="delete from phistory where serial='"+id+"'";
+		db.execute(sql,function(results){
+			callback(true);
+		});
+
 	}
 	
 }

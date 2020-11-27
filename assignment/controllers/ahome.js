@@ -67,6 +67,13 @@ router.post('/orderconfirm/:serial',(req,res)=>{
     });
 
 });
+router.get('/delete/:serial',(req,res)=>{
+    productModel.remove(req.params.serial,function(results){
+        productModel.getList(function(results){
+            res.render('ahome/list',{users:results})
+        });
+    });
+});
 
 
 module.exports = router;
